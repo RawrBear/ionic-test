@@ -44,6 +44,7 @@ import "./theme/variables.css";
 
 // Custom styles
 import "./App.css";
+import PokeList from "./pages/PokeList";
 
 setupIonicReact();
 const toggleDarkModeHandler = () => {
@@ -90,6 +91,7 @@ const App: React.FC = () => (
           </IonRow>
         </IonGrid>
       </IonToolbar>
+      <PokeList />
       <IonFooter>
         <IonToolbar>
           <IonTitle>Footer!</IonTitle>
