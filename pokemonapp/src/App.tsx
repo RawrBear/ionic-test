@@ -1,17 +1,24 @@
 import { Redirect, Route } from "react-router-dom";
 import {
   IonApp,
+  IonCol,
+  IonContent,
+  IonFooter,
+  IonGrid,
   IonIcon,
   IonLabel,
   IonRouterOutlet,
+  IonRow,
   IonTabBar,
   IonTabButton,
   IonTabs,
+  IonTitle,
   IonToggle,
+  IonToolbar,
   setupIonicReact,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { ellipse, square, triangle } from "ionicons/icons";
+import { ellipse, moon, square, sunny, triangle } from "ionicons/icons";
 import Tab1 from "./pages/Tab1";
 import Tab2 from "./pages/Tab2";
 import Tab3 from "./pages/Tab3";
@@ -35,42 +42,59 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 
+// Custom styles
+import "./App.css";
+
 setupIonicReact();
+const toggleDarkModeHandler = () => {
+  document.body.classList.toggle("dark");
+};
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/tab1">
-            <Tab1 />
-          </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
-          </Route>
-          <Route path="/tab3">
-            <Tab3 />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/tab1" />
-          </Route>
-        </IonRouterOutlet>
-        <IonTabBar slot="top">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon aria-hidden="true" icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon aria-hidden="true" icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon aria-hidden="true" icon={square} />
-            <IonLabel>Tab 3</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-        <IonToggle>Dark/Light</IonToggle>
-      </IonTabs>
+      <IonToolbar slot="top">
+        <IonGrid>
+          <IonRow
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              with: "100%",
+            }}
+          >
+            <IonCol style={{ paddingLeft: "2vw" }}>POKEMON</IonCol>
+
+            <IonCol
+              style={{
+                display: "flex",
+                justifyContent: "end",
+                paddingRight: "2vw",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  width: "5vw",
+                  justifyContent: "space-between",
+                }}
+              >
+                <IonIcon icon={sunny} />
+                <IonToggle
+                  slot="end"
+                  name="darkMode"
+                  onIonChange={toggleDarkModeHandler}
+                />
+                <IonIcon icon={moon} />
+              </div>
+            </IonCol>
+          </IonRow>
+        </IonGrid>
+      </IonToolbar>
+      <IonFooter>
+        <IonToolbar>
+          <IonTitle>Footer!</IonTitle>
+        </IonToolbar>
+      </IonFooter>
     </IonReactRouter>
   </IonApp>
 );
