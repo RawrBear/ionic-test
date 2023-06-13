@@ -17,12 +17,12 @@ import { useEffect } from "react";
 
 // TODO: Grab stats from api based on name. See:https://pokeapi.co/docs/v2#pokemon-section
 
-function PokeSingle({ name }) {
+function PokeSingle({}) {
   const [pokeData, setPokeData] = useState();
 
-  const { loading, error, data } = useQuery(GET_POKEMONS, {
+  const { loading, error, data } = useQuery(GET_SINGLE_POKEMON, {
     variables: {
-      name: name,
+      name: "ivysaur",
     },
   });
 
@@ -30,8 +30,8 @@ function PokeSingle({ name }) {
     if (loading) {
       console.log("Loading");
     } else {
-      console.log("Data:", data);
-      setPokeData(data.pokemon);
+      console.log("Data SINGLE:", data);
+      setPokeData(data.pokemon.pokemon);
     }
 
     if (error) {
@@ -43,7 +43,7 @@ function PokeSingle({ name }) {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>{name}</IonTitle>
+          <IonTitle></IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">

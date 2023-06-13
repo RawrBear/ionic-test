@@ -56,11 +56,6 @@ const App = () => (
   <ApolloProvider client={client}>
     <IonApp>
       <IonReactRouter>
-        {/* <IonRouterOutlet>
-          <Route path="/pokelist" component={PokeList} />
-          <Redirect exact from="/" to="/pokelist" />
-          <Route path="/pokesingle" component={PokeSingle} />
-        </IonRouterOutlet> */}
         <IonRouterOutlet>
           <Route path="/pokelist" component={PokeList} exact={true} />
 

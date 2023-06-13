@@ -26,8 +26,8 @@ function PokeCard({ name, img }: Props) {
       </IonCardHeader>
 
       <IonCardContent>
-        <IonButton>
-          <a hre>Click For Stats</a>
+        <IonButton href="/pokesingle" name={name}>
+          Click For Stats
         </IonButton>
       </IonCardContent>
     </IonCard>

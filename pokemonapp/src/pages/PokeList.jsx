@@ -52,6 +52,11 @@ function PokeList() {
       console.log("Loading");
     } else {
       console.log("Data:", data);
+      setPokeData(data.pokemons);
+      // data.abilities.results.map((pokemon) => {
+      //   setPokeTest(pokemon.name);
+      //   console.log("pokemon.name", pokemon.name);
+      // });
     }
 
     if (error) {
