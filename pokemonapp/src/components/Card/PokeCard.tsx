@@ -4,6 +4,8 @@ import {
   IonCardTitle,
   IonCardSubtitle,
   IonCardContent,
+  IonBackButton,
+  IonButton,
 } from "@ionic/react";
 
 import "./PokeCard.css";
@@ -14,7 +16,6 @@ type Props = {
 };
 
 function PokeCard({ name, img }: Props) {
-  console.log("IMAGE:", img);
   return (
     <IonCard style={{ display: "flex", flexDirection: "column" }}>
       <img style={{ alignItems: "center" }} alt="Image of {name}" src={img} />
@@ -22,10 +23,13 @@ function PokeCard({ name, img }: Props) {
         <IonCardTitle style={{ textTransform: "capitalize", Weight: "bold" }}>
           {name}
         </IonCardTitle>
-        <IonCardSubtitle>Abilities: </IonCardSubtitle>
       </IonCardHeader>
 
-      <IonCardContent>Click for stats</IonCardContent>
+      <IonCardContent>
+        <IonButton>
+          <a hre>Click For Stats</a>
+        </IonButton>
+      </IonCardContent>
     </IonCard>
   );
 }

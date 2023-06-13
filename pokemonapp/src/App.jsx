@@ -1,5 +1,9 @@
 import { Redirect, Route } from "react-router-dom";
 import {
+  IonLabel,
+  IonTabBar,
+  IonTabButton,
+  IonTabs,
   IonApp,
   IonCol,
   IonFooter,
@@ -10,7 +14,9 @@ import {
   IonToggle,
   IonToolbar,
   setupIonicReact,
+  IonRouterOutlet,
 } from "@ionic/react";
+import { triangle } from "ionicons/icons";
 import { IonReactRouter } from "@ionic/react-router";
 import { moon, sunny } from "ionicons/icons";
 
@@ -39,6 +45,7 @@ import "./theme/variables.css";
 // Custom styles
 import "./App.css";
 import PokeList from "./pages/PokeList";
+import PokeSingle from "./pages/PokeSingle";
 
 setupIonicReact();
 const toggleDarkModeHandler = () => {
@@ -49,6 +56,21 @@ const App = () => (
   <ApolloProvider client={client}>
     <IonApp>
       <IonReactRouter>
+        {/* <IonRouterOutlet>
+          <Route path="/pokelist" component={PokeList} />
+          <Redirect exact from="/" to="/pokelist" />
+          <Route path="/pokesingle" component={PokeSingle} />
+        </IonRouterOutlet> */}
+        <IonRouterOutlet>
+          <Route path="/pokelist" component={PokeList} exact={true} />
+
+          <Route
+            path="/"
+            render={() => <Redirect to="/pokelist" />}
+            exact={true}
+          />
+          <Route path="/pokesingle" component={PokeSingle} />
+        </IonRouterOutlet>
         <IonToolbar slot="top">
           <IonGrid>
             <IonRow
@@ -86,10 +108,19 @@ const App = () => (
             </IonRow>
           </IonGrid>
         </IonToolbar>
-        <PokeList />
+
         <IonFooter>
           <IonToolbar>
-            <IonTitle>Footer!</IonTitle>
+            <IonTabBar slot="bottom">
+              <IonTabButton tab="tab1" href="/tab1">
+                <IonIcon icon={triangle} />
+                <IonLabel>Tab 1</IonLabel>
+              </IonTabButton>
+              <IonTabButton tab="random" href="/random">
+                <IonIcon icon={triangle} />
+                <IonLabel>Random</IonLabel>
+              </IonTabButton>
+            </IonTabBar>
           </IonToolbar>
         </IonFooter>
       </IonReactRouter>

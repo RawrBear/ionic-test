@@ -40,7 +40,6 @@ const pokemonNames = [
   "Raticate",
 ];
 
-// TODO: Flip the card
 // TODO: Grab stats from api based on name. See:https://pokeapi.co/docs/v2#pokemon-section
 
 function PokeList() {
@@ -53,11 +52,6 @@ function PokeList() {
       console.log("Loading");
     } else {
       console.log("Data:", data);
-      setPokeData(data.pokemons);
-      // data.abilities.results.map((pokemon) => {
-      //   setPokeTest(pokemon.name);
-      //   console.log("pokemon.name", pokemon.name);
-      // });
     }
 
     if (error) {
@@ -74,7 +68,7 @@ function PokeList() {
       </IonHeader>
       <IonContent className="ion-padding">
         <IonTitle size="large">POKE LIST</IonTitle>
-        <IonGrid fixed={true}>
+        <IonGrid fixed={true} style={{ margin: "6vh auto 6vh auto" }}>
           <IonRow>
             {!pokeData ? (
               <h1>LOADING</h1>
