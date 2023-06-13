@@ -5,26 +5,27 @@ import {
   IonCardSubtitle,
   IonCardContent,
 } from "@ionic/react";
-import React from "react";
 
-type Props = {};
+import "./PokeCard.css";
 
-function PokeCard({}: Props) {
+type Props = {
+  name: string;
+  img: string;
+};
+
+function PokeCard({ name, img }: Props) {
+  console.log("IMAGE:", img);
   return (
-    <IonCard>
-      <img
-        alt="Silhouette of mountains"
-        src="https://ionicframework.com/docs/img/demos/card-media.png"
-      />
+    <IonCard style={{ display: "flex", flexDirection: "column" }}>
+      <img style={{ alignItems: "center" }} alt="Image of {name}" src={img} />
       <IonCardHeader>
-        <IonCardTitle>Card Title</IonCardTitle>
-        <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+        <IonCardTitle style={{ textTransform: "capitalize", Weight: "bold" }}>
+          {name}
+        </IonCardTitle>
+        <IonCardSubtitle>Abilities: </IonCardSubtitle>
       </IonCardHeader>
 
-      <IonCardContent>
-        Here's a small text description for the card content. Nothing more,
-        nothing less.
-      </IonCardContent>
+      <IonCardContent>Click for stats</IonCardContent>
     </IonCard>
   );
 }
