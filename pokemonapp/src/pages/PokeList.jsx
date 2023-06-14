@@ -42,7 +42,7 @@ const pokemonNames = [
 
 // TODO: Grab stats from api based on name. See:https://pokeapi.co/docs/v2#pokemon-section
 
-function PokeList() {
+function PokeList({ name, img }) {
   const [pokeData, setPokeData] = useState();
   const [pokeTest, setPokeTest] = useState();
   const { loading, error, data } = useQuery(GET_POKEMONS);
