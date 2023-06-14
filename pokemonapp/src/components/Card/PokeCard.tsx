@@ -9,6 +9,7 @@ import {
 } from "@ionic/react";
 
 import "./PokeCard.css";
+import { Link } from "react-router-dom";
 
 type Props = {
   name: string;
@@ -26,9 +27,8 @@ function PokeCard({ name, img }: Props) {
       </IonCardHeader>
 
       <IonCardContent>
-        <IonButton href="/pokesingle" name={name}>
-          Click For Stats
-        </IonButton>
+        {/* Button sends the name to the pokesingle page */}
+        <IonButton href={`/pokesingle/${name}`}>CLICK</IonButton>
       </IonCardContent>
     </IonCard>
   );

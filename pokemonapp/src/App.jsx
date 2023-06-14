@@ -64,7 +64,7 @@ const App = () => (
             render={() => <Redirect to="/pokelist" />}
             exact={true}
           />
-          <Route path="/pokesingle" component={PokeSingle} />
+          <Route path="/pokesingle/:name" render={() => <PokeSingle />} />
         </IonRouterOutlet>
         <IonToolbar slot="top">
           <IonGrid>
